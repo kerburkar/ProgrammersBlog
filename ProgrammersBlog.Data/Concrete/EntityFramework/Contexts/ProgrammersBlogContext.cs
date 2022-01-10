@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ProgrammersBlog.Data.Concrete.EntityFramework.Mappings;
 using ProgrammersBlog.Entities;
 using ProgrammersBlog.Entities.Concrete;
 using System;
@@ -21,6 +22,17 @@ namespace ProgrammersBlog.Data.Concrete.EntityFramework.Contexts
         {
             optionsBuilder.UseSqlServer(@"Server=.;Database=ProgrammersBlog;Trusted_Connection=True;Connect Timeout=30;MultipleActiveResultSets=True;");
             
+        }
+
+        //hazırladığımız map sınıflarımızın, DbContext sınıfımızın içerisinde; bir konfigürasyon sınıfı olarak çağırmak için;
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new ArticleMap());
+            modelBuilder.ApplyConfiguration(new CategoryMap());
+            modelBuilder.ApplyConfiguration(new CommentMap());
+            modelBuilder.ApplyConfiguration(new RoleMap());
+            modelBuilder.ApplyConfiguration(new UserMap());
+
         }
     }
 }

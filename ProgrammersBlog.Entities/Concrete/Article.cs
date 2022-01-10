@@ -50,8 +50,7 @@ namespace ProgrammersBlog.Entities.Concrete
 
         //bir makale birden çok yoruma sahip olabilir. o yüzden ilişkilendirdik.
         public ICollection<Comment> Comments { get; set; }
-
-
-
+        public object Content { get; set; }
+        public object CreatedDate { get; set; }
     }
 }
