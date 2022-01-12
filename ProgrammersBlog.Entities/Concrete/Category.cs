@@ -20,7 +20,7 @@ namespace ProgrammersBlog.Entities
 
         //Bir kategoride birden fazla makale olabileceği için.
         public ICollection<Article> Articles { get; set; }
-        public object Name { get; set; }
-        public object CreatedDate { get; set; }
+        public string Name { get; set; }
+        public DateTime CreatedDate { get; set; }
     }
 }

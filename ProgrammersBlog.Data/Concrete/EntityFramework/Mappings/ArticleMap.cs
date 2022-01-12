@@ -42,8 +42,8 @@ namespace ProgrammersBlog.Data.Concrete.EntityFramework.Mappings
             //makaleyi paylaşan ve karakter sınırı için;
             builder.Property(a => a.SeoAuthor).IsRequired();
             builder.Property(a => a.SeoAuthor).HasMaxLength(50);
-            builder.Property(a => SeoDescription).HasMaxLength(150);
-            builder.Property(a => SeoDescription).IsRequired();
+            builder.Property(a => a.SeoDescription).HasMaxLength(150);
+            builder.Property(a => a.SeoDescription).IsRequired();
             builder.Property(a => a.SeoTags).IsRequired();
             builder.Property(a => a.SeoTags).HasMaxLength(70);
             //okunma, resim ve görüntülenme sayısı için;
@@ -65,7 +65,7 @@ namespace ProgrammersBlog.Data.Concrete.EntityFramework.Mappings
             builder.Property(a => a.Note).HasMaxLength(500);
 
             //bir kategorinin birden fazla makelesi olması. Bire-Çok ilişkisinin kurulması için;
-            builder.HasOne<Category>(navigationExpression: a => a.Category).WithMany(navigationExpression:c => c.Articles).HasForeignKey(a => CategoryId);
+            builder.HasOne<Category>(navigationExpression: a => a.Category).WithMany(navigationExpression:c => c.Articles).HasForeignKey(a => a.CategoryId);
 
             //UserId bire çok ilişkisi için;
             builder.HasOne<User>(navigationExpression: a => a.User).WithMany(navigationExpression: u => u.Articles).HasForeignKey(a => a.UserId);

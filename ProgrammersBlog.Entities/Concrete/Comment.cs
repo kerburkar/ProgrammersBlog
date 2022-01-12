@@ -15,6 +15,6 @@ namespace ProgrammersBlog.Entities.Concrete
         //hangi makaleye ait olduğunu bilmek için.
         public int ArticleId { get; set; }
         public Article Article { get; set; }
-        public object CreatedDate { get; set; }
+        public DateTime CreatedDate { get; set; }
     }
 }
