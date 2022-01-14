@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace ProgrammersBlog.Data.Concrete.EntityFramework.Contexts
 {
+    //eğer dbSet tanımlı(Article, Category, vs) sınıflarda değişiklik ya da yeni prop eklenirse migration atılmalıdır ve sadece update-database yapılmalıdır.
     public class ProgrammersBlogContext:DbContext
     {
         public DbSet<Article> Articles { get; set; }
