@@ -12,7 +12,7 @@ namespace ProgrammersBlog.Shared.Entities.Abstract
         public virtual int Id { get; set; }
 
         //oluşturulma tarihi.
-        public virtual DateTime DateTime { get; set; } = DateTime.Now; // kendimiz tarih vermek istediğimizde; ovveride CreatedDate = new DateTime(2022/01/07);
+        public virtual DateTime CreatedDate { get; set; } = DateTime.Now; // kendimiz tarih vermek istediğimizde; ovveride CreatedDate = new DateTime(2022/01/07);
         
         //tarihimizi güncellemek/düzeltmek için.
         public virtual DateTime ModifiedDate { get; set; } = DateTime.Now;

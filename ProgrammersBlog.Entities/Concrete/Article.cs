@@ -9,11 +9,12 @@ namespace ProgrammersBlog.Entities.Concrete
 {
     public class Article:EntityBase, IEntity
     {
+        
         //makale başlığı için.
         public string Title { get; set; }
 
         //makale içeriği için.
-        public string MyProperty { get; set; }
+        public string Content { get; set; }
 
         //makale resmi için.
         public string Thumbnail { get; set; }
@@ -22,10 +23,10 @@ namespace ProgrammersBlog.Entities.Concrete
         public DateTime Date { get; set; }
 
         //makale okunma sayısı için.
-        public int ViewsCount { get; set; }
+        public int ViewsCount { get; set; } = 0;
 
         //makale yorum sayısı için.
-        public int CommentCount { get; set; }
+        public int CommentCount { get; set; } = 0;
 
         //paylaşan seo bilgisi için.
         public string SeoAuthor { get; set; }
@@ -50,7 +51,5 @@ namespace ProgrammersBlog.Entities.Concrete
 
         //bir makale birden çok yoruma sahip olabilir. o yüzden ilişkilendirdik.
         public ICollection<Comment> Comments { get; set; }
-        public string Content { get; set; }
-        public DateTime CreatedDate { get; set; }
     }
 }

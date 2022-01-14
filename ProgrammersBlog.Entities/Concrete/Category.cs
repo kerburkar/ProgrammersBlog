@@ -13,14 +13,13 @@ namespace ProgrammersBlog.Entities
     public class Category:EntityBase,IEntity
     {
         //Kategori isim eklenmesi için.
-        public string Nanme { get; set; }
+        public string Name { get; set; }
 
         //Kategoiri açıklaması için.
         public string Description { get; set; }
 
         //Bir kategoride birden fazla makale olabileceği için.
         public ICollection<Article> Articles { get; set; }
-        public string Name { get; set; }
-        public DateTime CreatedDate { get; set; }
+
     }
 }

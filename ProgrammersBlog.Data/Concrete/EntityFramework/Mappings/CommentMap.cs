@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ProgrammersBlog.Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -9,9 +10,9 @@ using System.Threading.Tasks;
 namespace ProgrammersBlog.Data.Concrete.EntityFramework.Mappings
 {
     //veri tabanımıza hangi ayar ve özellikler gitmesi gerektiğini belirtmek için;
-    public class CommentMap : IEntityTypeConfiguration<Comment>
+    public class CommentMap:IEntityTypeConfiguration<Comment>
     {
-        public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<Comment> builder)
+        public void Configure(EntityTypeBuilder<Comment> builder)
         {
             builder.HasKey(c => c.Id);
             builder.Property(c => c.Id).ValueGeneratedOnAdd();
@@ -19,7 +20,7 @@ namespace ProgrammersBlog.Data.Concrete.EntityFramework.Mappings
             builder.Property(c => c.Text).HasMaxLength(1000);
 
             //article ile ilişkisi için;
-            builder.HasOne<Article>(navigationExpression: c => c.Article).WithMany(navigationExpression: a => a.Comments).HasForeignKey(a => a.ArticleId);
+            builder.HasOne<Article>(c => c.Article).WithMany(a => a.Comments).HasForeignKey(c => c.ArticleId);
 
             builder.Property(c => c.CreatedByName).IsRequired();
             builder.Property(c => c.CreatedByName).HasMaxLength(50);
@@ -80,8 +81,6 @@ namespace ProgrammersBlog.Data.Concrete.EntityFramework.Mappings
                 }
 
                 );
-
-
         }
     }
 }

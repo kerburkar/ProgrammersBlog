@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ProgrammersBlog.Data.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class ProgrammersBlog : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,11 +13,9 @@ namespace ProgrammersBlog.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nanme = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
                     Name = table.Column<string>(type: "nvarchar(70)", maxLength: 70, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
@@ -39,7 +37,6 @@ namespace ProgrammersBlog.Data.Migrations
                     Name = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
@@ -67,7 +64,6 @@ namespace ProgrammersBlog.Data.Migrations
                     Picture = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
@@ -93,7 +89,7 @@ namespace ProgrammersBlog.Data.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    MyProperty = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Content = table.Column<string>(type: "NVARCHAR(MAX)", nullable: false),
                     Thumbnail = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ViewsCount = table.Column<int>(type: "int", nullable: false),
@@ -103,9 +99,7 @@ namespace ProgrammersBlog.Data.Migrations
                     SeoTags = table.Column<string>(type: "nvarchar(70)", maxLength: 70, nullable: false),
                     CategoryId = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false),
-                    Content = table.Column<string>(type: "NVARCHAR(MAX)", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
@@ -139,7 +133,6 @@ namespace ProgrammersBlog.Data.Migrations
                     Text = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
                     ArticleId = table.Column<int>(type: "int", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
@@ -160,53 +153,53 @@ namespace ProgrammersBlog.Data.Migrations
 
             migrationBuilder.InsertData(
                 table: "Categories",
-                columns: new[] { "Id", "CreatedByName", "CreatedDate", "DateTime", "Description", "IsActive", "IsDeleted", "ModifiedByName", "ModifiedDate", "Name", "Nanme", "Note" },
+                columns: new[] { "Id", "CreatedByName", "CreatedDate", "Description", "IsActive", "IsDeleted", "ModifiedByName", "ModifiedDate", "Name", "Note" },
                 values: new object[,]
                 {
-                    { 1, "InitialCreate", new DateTime(2022, 1, 11, 12, 9, 52, 380, DateTimeKind.Local).AddTicks(6520), new DateTime(2022, 1, 11, 12, 9, 52, 380, DateTimeKind.Local).AddTicks(4270), "C# Programlama Dili ile İlgili En Güncel Bilgiler", true, false, "InitialCreate", new DateTime(2022, 1, 11, 12, 9, 52, 380, DateTimeKind.Local).AddTicks(7515), "C#", null, "C# Blog Kategorisi" },
-                    { 2, "InitialCreate", new DateTime(2022, 1, 11, 12, 9, 52, 380, DateTimeKind.Local).AddTicks(7575), new DateTime(2022, 1, 11, 12, 9, 52, 380, DateTimeKind.Local).AddTicks(7561), "C++ Programlama Dili ile İlgili En Güncel Bilgiler", true, false, "InitialCreate", new DateTime(2022, 1, 11, 12, 9, 52, 380, DateTimeKind.Local).AddTicks(7581), "C++", null, "C++ Blog Kategorisi" },
-                    { 3, "InitialCreate", new DateTime(2022, 1, 11, 12, 9, 52, 380, DateTimeKind.Local).AddTicks(7597), new DateTime(2022, 1, 11, 12, 9, 52, 380, DateTimeKind.Local).AddTicks(7587), "JavaScript Programlama Dili ile İlgili En Güncel Bilgiler", true, false, "InitialCreate", new DateTime(2022, 1, 11, 12, 9, 52, 380, DateTimeKind.Local).AddTicks(7602), "JavaScript", null, "JavaScript Blog Kategorisi" }
+                    { 1, "InitialCreate", new DateTime(2022, 1, 14, 18, 19, 23, 350, DateTimeKind.Local).AddTicks(8408), "C# Programlama Dili ile İlgili En Güncel Bilgiler", true, false, "InitialCreate", new DateTime(2022, 1, 14, 18, 19, 23, 350, DateTimeKind.Local).AddTicks(8416), "C#", "C# Blog Kategorisi" },
+                    { 2, "InitialCreate", new DateTime(2022, 1, 14, 18, 19, 23, 350, DateTimeKind.Local).AddTicks(8425), "C++ Programlama Dili ile İlgili En Güncel Bilgiler", true, false, "InitialCreate", new DateTime(2022, 1, 14, 18, 19, 23, 350, DateTimeKind.Local).AddTicks(8426), "C++", "C++ Blog Kategorisi" },
+                    { 3, "InitialCreate", new DateTime(2022, 1, 14, 18, 19, 23, 350, DateTimeKind.Local).AddTicks(8429), "JavaScript Programlama Dili ile İlgili En Güncel Bilgiler", true, false, "InitialCreate", new DateTime(2022, 1, 14, 18, 19, 23, 350, DateTimeKind.Local).AddTicks(8430), "JavaScript", "JavaScript Blog Kategorisi" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Roles",
-                columns: new[] { "Id", "CreatedByName", "CreatedDate", "DateTime", "Description", "IsActive", "IsDeleted", "ModifiedByName", "ModifiedDate", "Name", "Note" },
-                values: new object[] { 1, "InitialCreate", new DateTime(2022, 1, 11, 12, 9, 52, 395, DateTimeKind.Local).AddTicks(1985), new DateTime(2022, 1, 11, 12, 9, 52, 394, DateTimeKind.Local).AddTicks(9798), "Admin Rolü, Tüm Haklara Sahiptir.", true, false, "InitialCreate", new DateTime(2022, 1, 11, 12, 9, 52, 395, DateTimeKind.Local).AddTicks(2897), "Admin", "Admin Rolüdür." });
+                columns: new[] { "Id", "CreatedByName", "CreatedDate", "Description", "IsActive", "IsDeleted", "ModifiedByName", "ModifiedDate", "Name", "Note" },
+                values: new object[] { 1, "InitialCreate", new DateTime(2022, 1, 14, 18, 19, 23, 353, DateTimeKind.Local).AddTicks(2530), "Admin Rolü, Tüm Haklara Sahiptir.", true, false, "InitialCreate", new DateTime(2022, 1, 14, 18, 19, 23, 353, DateTimeKind.Local).AddTicks(2537), "Admin", "Admin Rolüdür." });
 
             migrationBuilder.InsertData(
                 table: "Users",
-                columns: new[] { "Id", "CreatedByName", "CreatedDate", "DateTime", "Description", "Email", "FirstName", "IsActive", "IsDeleted", "LastName", "ModifiedByName", "ModifiedDate", "Note", "PasswordHash", "Picture", "RoleId", "UserName" },
-                values: new object[] { 1, "InitialCreate", new DateTime(2022, 1, 11, 12, 9, 52, 442, DateTimeKind.Local).AddTicks(5982), new DateTime(2022, 1, 11, 12, 9, 52, 442, DateTimeKind.Local).AddTicks(2454), "İlk Admin Kullanıcı", "kerimeburcu@gmail.com", "Kerime Burcu", true, false, "Karataş", "InitialCreate", new DateTime(2022, 1, 11, 12, 9, 52, 442, DateTimeKind.Local).AddTicks(6900), "Admin Kullanıcısı", new byte[] { 48, 49, 57, 50, 48, 50, 51, 97, 55, 98, 98, 100, 55, 51, 50, 53, 48, 53, 49, 54, 102, 48, 54, 57, 100, 102, 49, 56, 98, 53, 48, 48 }, "", 1, "kerburkar" });
+                columns: new[] { "Id", "CreatedByName", "CreatedDate", "Description", "Email", "FirstName", "IsActive", "IsDeleted", "LastName", "ModifiedByName", "ModifiedDate", "Note", "PasswordHash", "Picture", "RoleId", "UserName" },
+                values: new object[] { 1, "InitialCreate", new DateTime(2022, 1, 14, 18, 19, 23, 361, DateTimeKind.Local).AddTicks(4322), "İlk Admin Kullanıcı", "kerimeburcu@gmail.com", "Kerime Burcu", true, false, "Karataş", "InitialCreate", new DateTime(2022, 1, 14, 18, 19, 23, 361, DateTimeKind.Local).AddTicks(4330), "Admin Kullanıcısı", new byte[] { 48, 49, 57, 50, 48, 50, 51, 97, 55, 98, 98, 100, 55, 51, 50, 53, 48, 53, 49, 54, 102, 48, 54, 57, 100, 102, 49, 56, 98, 53, 48, 48 }, "", 1, "kerburkar" });
 
             migrationBuilder.InsertData(
                 table: "Articles",
-                columns: new[] { "Id", "CategoryId", "CommentCount", "Content", "CreatedByName", "CreatedDate", "Date", "DateTime", "IsActive", "IsDeleted", "ModifiedByName", "ModifiedDate", "MyProperty", "Note", "SeoAuthor", "SeoDescription", "SeoTags", "Thumbnail", "Title", "UserId", "ViewsCount" },
-                values: new object[] { 1, 1, 1, "Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat numune kitabı oluşturmak üzere bir yazı galerisini alarak karıştırdığı 1500'lerden beri endüstri standardı sahte metinler olarak kullanılmıştır. Beşyüz yıl boyunca varlığını sürdürmekle kalmamış, aynı zamanda pek değişmeden elektronik dizgiye de sıçramıştır. 1960'larda Lorem Ipsum pasajları da içeren Letraset yapraklarının yayınlanması ile ve yakın zamanda Aldus PageMaker gibi Lorem Ipsum sürümleri içeren masaüstü yayıncılık yazılımları ile popüler olmuştur.", "InitialCreate", new DateTime(2022, 1, 11, 12, 9, 52, 370, DateTimeKind.Local).AddTicks(1361), new DateTime(2022, 1, 11, 12, 9, 52, 369, DateTimeKind.Local).AddTicks(8628), new DateTime(2022, 1, 11, 12, 9, 52, 366, DateTimeKind.Local).AddTicks(3149), true, false, "InitialCreate", new DateTime(2022, 1, 11, 12, 9, 52, 370, DateTimeKind.Local).AddTicks(3227), null, "C# 9.0 ve .Net 5 Yenilikleri", "Kerime Burcu Karataş", "C# 9.0 ve .Net 5 Yenilikleri", "C#, C# 9, .NET5, .Net Framework, .Net Core", "Default.jpg", "C# 9.0 ve .Net 5 Yenilikleri", 1, 297 });
+                columns: new[] { "Id", "CategoryId", "CommentCount", "Content", "CreatedByName", "CreatedDate", "Date", "IsActive", "IsDeleted", "ModifiedByName", "ModifiedDate", "Note", "SeoAuthor", "SeoDescription", "SeoTags", "Thumbnail", "Title", "UserId", "ViewsCount" },
+                values: new object[] { 1, 1, 1, "Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat numune kitabı oluşturmak üzere bir yazı galerisini alarak karıştırdığı 1500'lerden beri endüstri standardı sahte metinler olarak kullanılmıştır. Beşyüz yıl boyunca varlığını sürdürmekle kalmamış, aynı zamanda pek değişmeden elektronik dizgiye de sıçramıştır. 1960'larda Lorem Ipsum pasajları da içeren Letraset yapraklarının yayınlanması ile ve yakın zamanda Aldus PageMaker gibi Lorem Ipsum sürümleri içeren masaüstü yayıncılık yazılımları ile popüler olmuştur.", "InitialCreate", new DateTime(2022, 1, 14, 18, 19, 23, 348, DateTimeKind.Local).AddTicks(8525), new DateTime(2022, 1, 14, 18, 19, 23, 348, DateTimeKind.Local).AddTicks(7962), true, false, "InitialCreate", new DateTime(2022, 1, 14, 18, 19, 23, 348, DateTimeKind.Local).AddTicks(8824), "C# 9.0 ve .Net 5 Yenilikleri", "Kerime Burcu Karataş", "C# 9.0 ve .Net 5 Yenilikleri", "C#, C# 9, .NET5, .Net Framework, .Net Core", "Default.jpg", "C# 9.0 ve .Net 5 Yenilikleri", 1, 297 });
 
             migrationBuilder.InsertData(
                 table: "Articles",
-                columns: new[] { "Id", "CategoryId", "CommentCount", "Content", "CreatedByName", "CreatedDate", "Date", "DateTime", "IsActive", "IsDeleted", "ModifiedByName", "ModifiedDate", "MyProperty", "Note", "SeoAuthor", "SeoDescription", "SeoTags", "Thumbnail", "Title", "UserId", "ViewsCount" },
-                values: new object[] { 2, 2, 1, "Yinelenen bir sayfa içeriğinin okuyucunun dikkatini dağıttığı bilinen bir gerçektir. Lorem Ipsum kullanmanın amacı, sürekli 'buraya metin gelecek, buraya metin gelecek' yazmaya kıyasla daha dengeli bir harf dağılımı sağlayarak okunurluğu artırmasıdır. Şu anda birçok masaüstü yayıncılık paketi ve web sayfa düzenleyicisi, varsayılan mıgır metinler olarak Lorem Ipsum kullanmaktadır. Ayrıca arama motorlarında 'lorem ipsum' anahtar sözcükleri ile arama yapıldığında henüz tasarım aşamasında olan çok sayıda site listelenir. Yıllar içinde, bazen kazara, bazen bilinçli olarak (örneğin mizah katılarak), çeşitli sürümleri geliştirilmiştir.", "InitialCreate", new DateTime(2022, 1, 11, 12, 9, 52, 370, DateTimeKind.Local).AddTicks(9956), new DateTime(2022, 1, 11, 12, 9, 52, 370, DateTimeKind.Local).AddTicks(9950), new DateTime(2022, 1, 11, 12, 9, 52, 370, DateTimeKind.Local).AddTicks(9895), true, false, "InitialCreate", new DateTime(2022, 1, 11, 12, 9, 52, 370, DateTimeKind.Local).AddTicks(9960), null, "C++ 11 ve 19 Yenilikleri", "Kerime Burcu Karataş", "C++ 11 ve 19 Yenilikleri", "C++ 11 ve 19 Yenilikleri", "Default.jpg", "C++ 11 ve 19 Yenilikleri", 1, 12 });
+                columns: new[] { "Id", "CategoryId", "CommentCount", "Content", "CreatedByName", "CreatedDate", "Date", "IsActive", "IsDeleted", "ModifiedByName", "ModifiedDate", "Note", "SeoAuthor", "SeoDescription", "SeoTags", "Thumbnail", "Title", "UserId", "ViewsCount" },
+                values: new object[] { 2, 2, 1, "Yinelenen bir sayfa içeriğinin okuyucunun dikkatini dağıttığı bilinen bir gerçektir. Lorem Ipsum kullanmanın amacı, sürekli 'buraya metin gelecek, buraya metin gelecek' yazmaya kıyasla daha dengeli bir harf dağılımı sağlayarak okunurluğu artırmasıdır. Şu anda birçok masaüstü yayıncılık paketi ve web sayfa düzenleyicisi, varsayılan mıgır metinler olarak Lorem Ipsum kullanmaktadır. Ayrıca arama motorlarında 'lorem ipsum' anahtar sözcükleri ile arama yapıldığında henüz tasarım aşamasında olan çok sayıda site listelenir. Yıllar içinde, bazen kazara, bazen bilinçli olarak (örneğin mizah katılarak), çeşitli sürümleri geliştirilmiştir.", "InitialCreate", new DateTime(2022, 1, 14, 18, 19, 23, 348, DateTimeKind.Local).AddTicks(9462), new DateTime(2022, 1, 14, 18, 19, 23, 348, DateTimeKind.Local).AddTicks(9461), true, false, "InitialCreate", new DateTime(2022, 1, 14, 18, 19, 23, 348, DateTimeKind.Local).AddTicks(9464), "C++ 11 ve 19 Yenilikleri", "Kerime Burcu Karataş", "C++ 11 ve 19 Yenilikleri", "C++ 11 ve 19 Yenilikleri", "Default.jpg", "C++ 11 ve 19 Yenilikleri", 1, 12 });
 
             migrationBuilder.InsertData(
                 table: "Articles",
-                columns: new[] { "Id", "CategoryId", "CommentCount", "Content", "CreatedByName", "CreatedDate", "Date", "DateTime", "IsActive", "IsDeleted", "ModifiedByName", "ModifiedDate", "MyProperty", "Note", "SeoAuthor", "SeoDescription", "SeoTags", "Thumbnail", "Title", "UserId", "ViewsCount" },
-                values: new object[] { 3, 3, 1, "Lorem Ipsum pasajlarının birçok çeşitlemesi vardır. Ancak bunların büyük bir çoğunluğu mizah katılarak veya rastgele sözcükler eklenerek değiştirilmişlerdir. Eğer bir Lorem Ipsum pasajı kullanacaksanız, metin aralarına utandırıcı sözcükler gizlenmediğinden emin olmanız gerekir. İnternet'teki tüm Lorem Ipsum üreteçleri önceden belirlenmiş metin bloklarını yineler. Bu da, bu üreteci İnternet üzerindeki gerçek Lorem Ipsum üreteci yapar. Bu üreteç, 200'den fazla Latince sözcük ve onlara ait cümle yapılarını içeren bir sözlük kullanır. Bu nedenle, üretilen Lorem Ipsum metinleri yinelemelerden, mizahtan ve karakteristik olmayan sözcüklerden uzaktır.", "InitialCreate", new DateTime(2022, 1, 11, 12, 9, 52, 370, DateTimeKind.Local).AddTicks(9987), new DateTime(2022, 1, 11, 12, 9, 52, 370, DateTimeKind.Local).AddTicks(9976), new DateTime(2022, 1, 11, 12, 9, 52, 370, DateTimeKind.Local).AddTicks(9967), true, false, "InitialCreate", new DateTime(2022, 1, 11, 12, 9, 52, 370, DateTimeKind.Local).AddTicks(9991), null, "JavaScript ES2019 ve ES2020 Yenilikleri", "Kerime Burcu Karataş", "JavaScript ES2019 ve ES2020 Yenilikleri", "JavaScript ES2019 ve ES2020 Yenilikleri", "Default.jpg", "JavaScript ES2019 ve ES2020 Yenilikleri", 1, 100 });
+                columns: new[] { "Id", "CategoryId", "CommentCount", "Content", "CreatedByName", "CreatedDate", "Date", "IsActive", "IsDeleted", "ModifiedByName", "ModifiedDate", "Note", "SeoAuthor", "SeoDescription", "SeoTags", "Thumbnail", "Title", "UserId", "ViewsCount" },
+                values: new object[] { 3, 3, 1, "Lorem Ipsum pasajlarının birçok çeşitlemesi vardır. Ancak bunların büyük bir çoğunluğu mizah katılarak veya rastgele sözcükler eklenerek değiştirilmişlerdir. Eğer bir Lorem Ipsum pasajı kullanacaksanız, metin aralarına utandırıcı sözcükler gizlenmediğinden emin olmanız gerekir. İnternet'teki tüm Lorem Ipsum üreteçleri önceden belirlenmiş metin bloklarını yineler. Bu da, bu üreteci İnternet üzerindeki gerçek Lorem Ipsum üreteci yapar. Bu üreteç, 200'den fazla Latince sözcük ve onlara ait cümle yapılarını içeren bir sözlük kullanır. Bu nedenle, üretilen Lorem Ipsum metinleri yinelemelerden, mizahtan ve karakteristik olmayan sözcüklerden uzaktır.", "InitialCreate", new DateTime(2022, 1, 14, 18, 19, 23, 348, DateTimeKind.Local).AddTicks(9468), new DateTime(2022, 1, 14, 18, 19, 23, 348, DateTimeKind.Local).AddTicks(9467), true, false, "InitialCreate", new DateTime(2022, 1, 14, 18, 19, 23, 348, DateTimeKind.Local).AddTicks(9470), "JavaScript ES2019 ve ES2020 Yenilikleri", "Kerime Burcu Karataş", "JavaScript ES2019 ve ES2020 Yenilikleri", "JavaScript ES2019 ve ES2020 Yenilikleri", "Default.jpg", "JavaScript ES2019 ve ES2020 Yenilikleri", 1, 100 });
 
             migrationBuilder.InsertData(
                 table: "Comments",
-                columns: new[] { "Id", "ArticleId", "CreatedByName", "CreatedDate", "DateTime", "IsActive", "IsDeleted", "ModifiedByName", "ModifiedDate", "Note", "Text" },
-                values: new object[] { 1, 1, "InitialCreate", new DateTime(2022, 1, 11, 12, 9, 52, 388, DateTimeKind.Local).AddTicks(6972), new DateTime(2022, 1, 11, 12, 9, 52, 388, DateTimeKind.Local).AddTicks(3925), true, false, "InitialCreate", new DateTime(2022, 1, 11, 12, 9, 52, 388, DateTimeKind.Local).AddTicks(8239), "C# Makale Yorumu", "1500'lerden beri kullanılmakta olan standard Lorem Ipsum metinleri ilgilenenler için yeniden üretilmiştir. Çiçero tarafından yazılan 1.10.32 ve 1.10.33 bölümleri de 1914 H. Rackham çevirisinden alınan İngilizce sürümleri eşliğinde özgün biçiminden yeniden üretilmiştir." });
+                columns: new[] { "Id", "ArticleId", "CreatedByName", "CreatedDate", "IsActive", "IsDeleted", "ModifiedByName", "ModifiedDate", "Note", "Text" },
+                values: new object[] { 1, 1, "InitialCreate", new DateTime(2022, 1, 14, 18, 19, 23, 352, DateTimeKind.Local).AddTicks(1942), true, false, "InitialCreate", new DateTime(2022, 1, 14, 18, 19, 23, 352, DateTimeKind.Local).AddTicks(1949), "C# Makale Yorumu", "1500'lerden beri kullanılmakta olan standard Lorem Ipsum metinleri ilgilenenler için yeniden üretilmiştir. Çiçero tarafından yazılan 1.10.32 ve 1.10.33 bölümleri de 1914 H. Rackham çevirisinden alınan İngilizce sürümleri eşliğinde özgün biçiminden yeniden üretilmiştir." });
 
             migrationBuilder.InsertData(
                 table: "Comments",
-                columns: new[] { "Id", "ArticleId", "CreatedByName", "CreatedDate", "DateTime", "IsActive", "IsDeleted", "ModifiedByName", "ModifiedDate", "Note", "Text" },
-                values: new object[] { 2, 2, "InitialCreate", new DateTime(2022, 1, 11, 12, 9, 52, 388, DateTimeKind.Local).AddTicks(8307), new DateTime(2022, 1, 11, 12, 9, 52, 388, DateTimeKind.Local).AddTicks(8293), true, false, "InitialCreate", new DateTime(2022, 1, 11, 12, 9, 52, 388, DateTimeKind.Local).AddTicks(8313), "C++ Makale Yorumu", "1500'lerden beri kullanılmakta olan standard Lorem Ipsum metinleri ilgilenenler için yeniden üretilmiştir. Çiçero tarafından yazılan 1.10.32 ve 1.10.33 bölümleri de 1914 H. Rackham çevirisinden alınan İngilizce sürümleri eşliğinde özgün biçiminden yeniden üretilmiştir." });
+                columns: new[] { "Id", "ArticleId", "CreatedByName", "CreatedDate", "IsActive", "IsDeleted", "ModifiedByName", "ModifiedDate", "Note", "Text" },
+                values: new object[] { 2, 2, "InitialCreate", new DateTime(2022, 1, 14, 18, 19, 23, 352, DateTimeKind.Local).AddTicks(1958), true, false, "InitialCreate", new DateTime(2022, 1, 14, 18, 19, 23, 352, DateTimeKind.Local).AddTicks(1959), "C++ Makale Yorumu", "1500'lerden beri kullanılmakta olan standard Lorem Ipsum metinleri ilgilenenler için yeniden üretilmiştir. Çiçero tarafından yazılan 1.10.32 ve 1.10.33 bölümleri de 1914 H. Rackham çevirisinden alınan İngilizce sürümleri eşliğinde özgün biçiminden yeniden üretilmiştir." });
 
             migrationBuilder.InsertData(
                 table: "Comments",
-                columns: new[] { "Id", "ArticleId", "CreatedByName", "CreatedDate", "DateTime", "IsActive", "IsDeleted", "ModifiedByName", "ModifiedDate", "Note", "Text" },
-                values: new object[] { 3, 3, "InitialCreate", new DateTime(2022, 1, 11, 12, 9, 52, 388, DateTimeKind.Local).AddTicks(8331), new DateTime(2022, 1, 11, 12, 9, 52, 388, DateTimeKind.Local).AddTicks(8320), true, false, "InitialCreate", new DateTime(2022, 1, 11, 12, 9, 52, 388, DateTimeKind.Local).AddTicks(8336), "JavaScript Makale Yorumu", "1500'lerden beri kullanılmakta olan standard Lorem Ipsum metinleri ilgilenenler için yeniden üretilmiştir. Çiçero tarafından yazılan 1.10.32 ve 1.10.33 bölümleri de 1914 H. Rackham çevirisinden alınan İngilizce sürümleri eşliğinde özgün biçiminden yeniden üretilmiştir." });
+                columns: new[] { "Id", "ArticleId", "CreatedByName", "CreatedDate", "IsActive", "IsDeleted", "ModifiedByName", "ModifiedDate", "Note", "Text" },
+                values: new object[] { 3, 3, "InitialCreate", new DateTime(2022, 1, 14, 18, 19, 23, 352, DateTimeKind.Local).AddTicks(1962), true, false, "InitialCreate", new DateTime(2022, 1, 14, 18, 19, 23, 352, DateTimeKind.Local).AddTicks(1963), "JavaScript Makale Yorumu", "1500'lerden beri kullanılmakta olan standard Lorem Ipsum metinleri ilgilenenler için yeniden üretilmiştir. Çiçero tarafından yazılan 1.10.32 ve 1.10.33 bölümleri de 1914 H. Rackham çevirisinden alınan İngilizce sürümleri eşliğinde özgün biçiminden yeniden üretilmiştir." });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Articles_CategoryId",

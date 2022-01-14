@@ -12,7 +12,6 @@ namespace ProgrammersBlog.Data.Concrete.EntityFramework.Mappings
     //veri tabanımıza hangi ayar ve özellikler gitmesi gerektiğini belirtmek için;
     public class UserMap : IEntityTypeConfiguration<User>
     {
-        public object RoleId { get; private set; }
 
         public void Configure(EntityTypeBuilder<User> builder)
         {

@@ -17,6 +17,5 @@ namespace ProgrammersBlog.Entities.Concrete
 
         //bir role'nun birden fazla kullanıcısı olabilir. Fakat bir kullanıcı bir role sahip olabilir.
         public ICollection<User> Users { get; set; }
-        public DateTime CreatedDate { get; set; }
     }
 }

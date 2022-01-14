@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ProgrammersBlog.Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -9,9 +10,9 @@ using System.Threading.Tasks;
 namespace ProgrammersBlog.Data.Concrete.EntityFramework.Mappings
 {
     //veri tabanımıza hangi ayar ve özellikler gitmesi gerektiğini belirtmek için;
-    public class RoleMap : IEntityTypeConfiguration<Role>
+    public class RoleMap:IEntityTypeConfiguration<Role>
     {
-        public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<Role> builder)
+        public void Configure(EntityTypeBuilder<Role> builder)
         {
             builder.HasKey(r => r.Id);
             builder.Property(r => r.Id).ValueGeneratedOnAdd();
@@ -45,5 +46,7 @@ namespace ProgrammersBlog.Data.Concrete.EntityFramework.Mappings
                 Note = "Admin Rolüdür."
             });
         }
+
+
     }
 }

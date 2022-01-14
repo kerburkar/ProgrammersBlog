@@ -13,9 +13,6 @@ namespace ProgrammersBlog.Data.Concrete.EntityFramework.Mappings
     //veri tabanımıza hangi ayar ve özellikler gitmesi gerektiğini belirtmek için;
     public class ArticleMap : IEntityTypeConfiguration<Article>
     {
-        public object SeoDescription { get; private set; }
-        public object CategoryId { get; private set; }
-
         public void Configure(EntityTypeBuilder<Article> builder)
         {
             //primaryKey alanı belirtmek için;
@@ -159,14 +156,6 @@ namespace ProgrammersBlog.Data.Concrete.EntityFramework.Mappings
              }
                 
             );
-
-
-
-
-
-
-
-
         }
     }
 }

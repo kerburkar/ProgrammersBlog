@@ -34,6 +34,5 @@ namespace ProgrammersBlog.Entities.Concrete
 
         //bir kullanıcı birden fazla paylaşıma sahip olabileceği için.
         public ICollection<Article> Articles { get; set; }
-        public DateTime CreatedDate { get; set; }
     }
 }
