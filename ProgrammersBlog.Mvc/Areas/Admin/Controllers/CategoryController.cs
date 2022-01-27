@@ -12,16 +12,19 @@ namespace ProgrammersBlog.Mvc.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class CategoryController : Controller
-    {       
+    {
         private readonly ICategoryService _categoryService;
+
         public CategoryController(ICategoryService categoryService)
         {
             _categoryService = categoryService;
         }
-        public async Task <IActionResult> Index()
+
+        public async Task<IActionResult> Index()
         {
-            var result = await _categoryService.GetAll();
+            var result = await _categoryService.GetAllByNonDelete();
             return View(result.Data);
+
         }
         [HttpGet]
         public IActionResult Add()
@@ -34,12 +37,12 @@ namespace ProgrammersBlog.Mvc.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 var result = await _categoryService.Add(categoryAddDto, "Kerime Burcu Karataş");
-                if(result.ResultStatus == ResultStatus.Success)
+                if (result.ResultStatus == ResultStatus.Success)
                 {
                     var categoryAddAjaxModel = JsonSerializer.Serialize(new CategoryAddAjaxViewModel
                     {
                         CategoryDto = result.Data,
-                        CategoryAddPartial = await this.RenderViewToStringAsync("_CategoryAddPartial", categoryAddDto) //frontend tarafına da gönderildiği için.
+                        CategoryAddPartial = await this.RenderViewToStringAsync("_CategoryAddPartial", categoryAddDto)
                     });
                     return Json(categoryAddAjaxModel);
                 }
@@ -49,14 +52,25 @@ namespace ProgrammersBlog.Mvc.Areas.Admin.Controllers
                 CategoryAddPartial = await this.RenderViewToStringAsync("_CategoryAddPartial", categoryAddDto)
             });
             return Json(categoryAddAjaxErrorModel);
+
         }
+
         public async Task<JsonResult> GetAllCategories()
         {
-            var result = await _categoryService.GetAll();
-            var categories = JsonSerializer.Serialize(result.Data,new JsonSerializerOptions{
+            var result = await _categoryService.GetAllByNonDelete();
+            var categories = JsonSerializer.Serialize(result.Data, new JsonSerializerOptions
+            {
                 ReferenceHandler = ReferenceHandler.Preserve
             });
             return Json(categories);
+        }
+
+        [HttpPost]
+        public async Task<JsonResult> Delete(int categoryId)
+        {
+            var result = await _categoryService.Delete(categoryId, "Kerime Burcu Karataş");
+            var deletedCategory = JsonSerializer.Serialize(result.Data);
+            return Json(deletedCategory);
         }
     }
 }

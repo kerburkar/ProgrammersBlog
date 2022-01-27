@@ -12,7 +12,7 @@ namespace ProgrammersBlog.Shared.Data.Abstract
     public interface IEntityRepository<T> where T : class, IEntity,new()  //imzası, sadece veri tabanı nesnelerinin gelebilmesi için.
     {
         //get metodu;
-        //var kullanici = repository.Get(k=>k.FirstName=="Alper"); vereceğimiz lambda expression'lar "filtre", yani predicate'dir.
+        //var kullanici = repository.Get(k=>k.FirstName=="Kerime Burcu"); vereceğimiz lambda expression'lar "filtre", yani predicate'dir.
         //includeProperties için örneğin; 25 id'li makaleyi getirirken, makale ile birlikte kullanıcıyı ve yorumları da include etmek istiyoruz, 
         //var makale = repository.GetAsync(m=>m.Id==25, m=>m.User,m=>m.Comments);
         Task<T> GetAsync(Expression<Func<T,bool>> predicate, params Expression<Func<T,object>>[] includeProperties); //var kullanici = repository.GetAsync
