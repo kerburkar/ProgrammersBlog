@@ -22,10 +22,10 @@ namespace ProgrammersBlog.Shared.Data.Abstract
         Task<IList<T>> GetAllAsync(Expression<Func<T, bool>> predicate = null, params Expression<Func<T, object>>[] includeProperties);
 
         //eklemek için;
-        Task AddAsync(T entity); 
+        Task<T> AddAsync(T entity); 
 
         //güncellemek için;
-        Task UpdateAsync(T entity);
+        Task<T> UpdateAsync(T entity);
         
         //silmek için;
         Task DeleteAsync(T entity);
