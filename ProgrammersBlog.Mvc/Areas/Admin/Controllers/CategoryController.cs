@@ -54,6 +54,19 @@ namespace ProgrammersBlog.Mvc.Areas.Admin.Controllers
             return Json(categoryAddAjaxErrorModel);
 
         }
+        [HttpGet]
+        public async Task<IActionResult> Update(int categoryId)
+        {
+            var result = await _categoryService.GetCategoryUpdateDto(categoryId);
+            if (result.ResultStatus == ResultStatus.Success)
+            {
+                return PartialView("_CategoryUpdatePartial", result.Data);
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
 
         public async Task<JsonResult> GetAllCategories()
         {
