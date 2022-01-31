@@ -11,8 +11,6 @@ namespace ProgrammersBlog.Data.Abstract
         IArticleRepository Articles { get; } //unitofwork.Articles ile erişebilir.
         ICategoryRepository Categories { get; }   
         ICommentRepository Comments { get; }
-        IRoleRepository Roles { get; }
-        IUserRepository Users { get; } //_unitOfWork.Categories.AddAsync(); metod kullanımı için.
 
         //örneğin;
         //_unitOfWork.Categories.AddAsync(category);
