@@ -37,6 +37,7 @@ namespace ProgrammersBlog.Entities.Dtos
         [DisplayName("Resim")] //gözüktüğü kısım
         [Required(ErrorMessage = "Lütfen, bir {0} seçiniz.")] //{0} = display adı
         [DataType(DataType.Upload)]
-        public IFormFile Picture { get; set; }
+        public IFormFile PictureFile { get; set; }
+        public string Picture { get; set; }
     }
 }
